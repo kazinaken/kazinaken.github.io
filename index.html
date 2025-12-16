@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus - Главная</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Убрал Bootstrap, так как используем Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#121212',
+                        darker: '#181e2a',
+                        primary: '#1e40af',
+                        secondary: '#166534',
+                        accent: '#3b82f6',
+                        grei: '#232a39',
+                        wgrei:'#5e5e5e',
+                        dblue:'#111827'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        .gradient-cat {
+            background: linear-gradient(90deg, #3b82f6 0%, #22c55e 100%);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6 0%, #22c55e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-btn {
+            background: linear-gradient(90deg, #3b82f6 0%, #22c55e 100%);
+        }
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            font-size: 10px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.5s ease-out;
+        }
+        /* Стили для адаптивности */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.75rem;
+            }
+            .section-padding {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+        @media (max-width: 640px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-title {
+                font-size: 1.5rem;
+            }
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-dark text-gray-200 min-h-screen">
+    <!-- Header -->
+    <header class="bg-darker border-b border-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-2 hover:opacity-90 transition">
+                    <img src="logo.png" alt="Nexus Logo" class="h-8 w-auto object-contain">
+                    <span class="text-xl font-bold gradient-text hidden sm:inline"></span>
+                </a>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-6 lg:space-x-8">
+                    <a href="index.html" class="nav-link font-medium hover:text-accent transition">Главная</a>
+                    <a href="katalog.html" class="nav-link font-medium hover:text-accent transition">Каталог</a>
+                    <a href="katalog.html" class="nav-link font-medium hover:text-accent transition">Новинки</a>
+                    <a href="#" class="nav-link font-medium hover:text-accent transition">О нас</a>
+                </nav>
+                
+                <!-- Cart and Auth -->
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button id="cartBtn" class="text-gray-300 hover:text-accent transition relative">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <span id="cartBadge" class="cart-badge bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                        </button>
+                    </div>
+                    <a href="login.html" class="text-white text-xl hover:text-accent transition">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                    <button class="md:hidden text-gray-300" id="mobileMenuBtn">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-2">
+                <a href="index.html" class="block py-2 hover:text-accent transition">Главная</a>
+                <a href="katalog.html" class="block py-2 hover:text-accent transition">Каталог</a>
+                <a href="katalog.html" class="block py-2 hover:text-accent transition">Новинки</a>
+                <a href="#" class="block py-2 hover:text-accent transition">О нас</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="w-full px-6 pt-6 pb-8 bg-[#181e2a]">
+   <div class="max-w-6xl mx-auto">
+    <div class="w-full mb-4">
+     <div class="relative">
+      <input class="w-full bg-[#232a39] text-white rounded-md py-2 pl-4 pr-10 text-base outline-none" placeholder="Поиск" type="text"/>
+      <span class="absolute right-3 top-2.5 text-gray-400 text-lg">
+       <i class="fas fa-search">
+       </i>
+      </span>
+     </div>
+    </div>
+            <div class="mb-4 sm:mb-2">
+                <h1 class="hero-title text-2xl sm:text-3xl md:text-4xl font-medium leading-snug text-center sm:text-left">
+                    Лучшие товары по выгодным ценам
+                    <br class="hidden sm:block"/>
+                    <span class="gradient-text font-normal block sm:inline mt-1">быстрая доставка по всей россии</span>
+                </h1>
+            </div>
+            <div class="text-sm text-white/80 mb-6 text-center sm:text-left">
+                откройте для себя мир электронных товаров
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <button class="gradient-btn hover:opacity-90 px-6 py-3 rounded-md font-medium transition w-full sm:w-auto text-center">
+                    Каталог
+                </button>
+                <button class="border border-gray-600 hover:border-accent hover:text-accent px-6 py-3 rounded-md font-medium transition w-full sm:w-auto text-center">
+                    Узнать больше
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="py-8 md:py-12 bg-grei section-padding">
+           <div class="max-w-6xl mx-auto">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8 text-gray-100">Категории</h2>
+            <div class="category-grid grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+                <a href="katalog.html" class="block bg-gradient-to-r from-accent to-secondary rounded-lg p-4 md:p-6 text-center hover:scale-105 transition-transform duration-300 cursor-pointer">
+                    <i class="fas fa-laptop text-3xl md:text-4xl text-white mb-3 md:mb-4"></i>
+                    <h3 class="font-semibold text-base md:text-lg">Ноутбуки</h3>
+                </a>
+                
+                <div class="bg-gradient-to-r from-accent to-secondary rounded-lg p-4 md:p-6 text-center hover:scale-105 transition-transform duration-300 cursor-pointer">
+                    <i class="fas fa-microchip text-3xl md:text-4xl text-white mb-3 md:mb-4"></i>
+                    <h3 class="font-semibold text-base md:text-lg">Комплектующие</h3>
+                </div>
+                
+                <div class="bg-gradient-to-r from-accent to-secondary rounded-lg p-4 md:p-6 text-center hover:scale-105 transition-transform duration-300 cursor-pointer">
+                    <i class="fas fa-home text-3xl md:text-4xl text-white mb-3 md:mb-4"></i>
+                    <h3 class="font-semibold text-base md:text-lg">Для дома</h3>
+                </div>
+                
+                <div class="bg-gradient-to-r from-accent to-secondary rounded-lg p-4 md:p-6 text-center hover:scale-105 transition-transform duration-300 cursor-pointer">
+                    <i class="fas fa-keyboard text-3xl md:text-4xl text-white mb-3 md:mb-4"></i>
+                    <h3 class="font-semibold text-base md:text-lg">Периферия</h3>
+                </div>
+                
+                <div class="bg-gradient-to-r from-accent to-secondary rounded-lg p-4 md:p-6 text-center hover:scale-105 transition-transform duration-300 cursor-pointer">
+                    <i class="fas fa-bath text-3xl md:text-4xl text-white mb-3 md:mb-4"></i>
+                    <h3 class="font-semibold text-base md:text-lg">Быт техника</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="products" class="py-8 md:py-12 bg-darker section-padding">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12 text-gray-100">Наши товары</h2>
+            
+            <!-- Фильтры -->
+             <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
+                <div class="relative w-full md:w-64">
+                    <select class="block appearance-none w-full bg-grei border border-gray-700 text-gray-100 py-2.5 px-4 pr-10 rounded focus:outline-none focus:ring-2 focus:ring-accent text-sm md:text-base">
+                        <option>Все категории</option>
+                        <option>Ноутбуки/ПК</option>
+                        <option>Комплектующие</option>
+                        <option>Для дома</option>
+                        <option>Периферия</option>
+                        <option>Быт техника</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-400">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div class="relative w-full md:w-64">
+                    <input type="text" 
+                           placeholder="Поиск товаров..." 
+                           class="bg-grei border border-gray-700 text-gray-100 py-2.5 px-4 pr-10 rounded focus:outline-none focus:ring-2 focus:ring-accent w-full text-sm md:text-base">
+                    <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
+                </div>
+            </div>
+            </div>
+            <!-- Сетка товаров -->
+               <div class="max-w-6xl mx-auto">
+            <div class="product-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-grei rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative">
+                        <img src="noyt1.png" 
+                             alt="Смартфон" 
+                             class="w-full h-48 object-cover">
+                        <span class="absolute top-2 right-2 bg-gradient-to-r from-accent to-secondary text-white text-xs px-2 py-1 rounded">Новинка</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Ноутбук MSI Katana</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-100 text-sm ml-2">(128 отзывов)</span>
+                        </div>
+                        <p class="text-gray-100 text-sm mb-4 line-clamp-2">Ноутбук MSI Katana GF76 B12UDXR-082RU черный </p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">88999 ₽</span>
+                            <button class="add-to-cart gradient-btn text-white px-4 py-2 rounded hover:opacity-90 transition text-sm md:text-base"
+                                    data-id="1" 
+                                    data-name="Ноутбук MSI Katana" 
+                                    data-price="88999" 
+                                    data-image="noyt1.png">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-grei rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative">
+                        <img src="noyt2.png" 
+                             alt="Часы" 
+                             class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Ноутбук ASUS TUF Gaming</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-100 text-sm ml-2">(86 отзывов)</span>
+                        </div>
+                        <p class="text-gray-100 text-sm mb-4 line-clamp-2">Ноутбук ASUS TUF Gaming F17 FX707ZC4-HX014 серый</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">71999 ₽</span>
+                            <button class="add-to-cart gradient-btn text-white px-4 py-2 rounded hover:opacity-90 transition text-sm md:text-base"
+                                    data-id="2" 
+                                    data-name="Ноутбук ASUS TUF Gaming" 
+                                    data-price="71999" 
+                                    data-image="noyt2.png">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-grei rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative">
+                        <img src="noyt3.png" 
+                             alt="Наушники" 
+                             class="w-full h-48 object-cover">
+                        <span class="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded">-20%</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Ноутбук MSI Katana 17</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-100 text-sm ml-2">(215 отзывов)</span>
+                        </div>
+                        <p class="text-gray-100 text-sm mb-4 line-clamp-2"> Ноутбук MSI Katana 17 HX B14VGK-053XRU черный</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="font-bold text-lg text-accent">1499 ₽</span>
+                                <span class="text-sm text-gray-500 line-through ml-2">160 ₽</span>
+                            </div>
+                            <button class="add-to-cart gradient-btn text-white px-4 py-2 rounded hover:opacity-90 transition text-sm md:text-base"
+                                    data-id="3" 
+                                    data-name="Ноутбук MSI Katana" 
+                                    data-price="149999" 
+                                    data-image="noyt3.png">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-grei rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative">
+                        <img src="noyt4.png" 
+                             alt="Кроссовки" 
+                             class="w-full h-48 object-cover">
+                        <span class="absolute top-2 right-2 bg-gradient-to-r from-accent to-secondary text-white text-xs px-2 py-1 rounded">Хит</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Ноутбук ASUS TUF Gaming</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-100 text-sm ml-2">(342 отзыва)</span>
+                        </div>
+                        <p class="text-gray-100 text-sm mb-4 line-clamp-2"> Ноутбук ASUS TUF Gaming FA607NU-NL084 черный</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">84999 ₽</span>
+                            <button class="add-to-cart gradient-btn text-white px-4 py-2 rounded hover:opacity-90 transition text-sm md:text-base"
+                                    data-id="4" 
+                                    data-name="Ноутбук ASUS TUF Gaming" 
+                                    data-price="84999" 
+                                    data-image="noyt4.png">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8 md:mt-10">
+                <button class="bg-grei border border-accent text-gray-100 px-6 py-3 rounded-lg font-medium hover:bg-accent hover:text-white transition">
+                    Показать больше товаров
+                </button>
+            </div>
+        </div>
+    </section>
+</div>
+</div>
+    <!-- Footer -->
+     <div class="absolute left-1/2 -translate-x-1/2 w-screen">
+    <footer class="bg-darker border-t border-gray-800 pt-8 md:pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">О нас</h3>
+                    <p class="text-gray-400 mb-4 text-sm">Лучший магазин электроники с 2020 года.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Магазин</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition text-sm">Все товары</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition text-sm">Новинки</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition text-sm">Популярное</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition text-sm">Акции</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Помощь</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition text-sm">Доставка</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition text-sm">Оплата</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition text-sm">Возврат</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition text-sm">Контакты</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Контакты</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-accent"></i> Москва, ул. Примерная, 123
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2 text-accent"></i> +7 (123) 456-78-90
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-accent"></i> info@nexus.ru
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-2 text-accent"></i> Пн-Пт: 10:00 - 20:00
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 Nexus. Все права защищены.</p>
+                <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
+                    <a href="#" class="text-gray-500 hover:text-accent text-sm transition">Политика конфиденциальности</a>
+                    <a href="#" class="text-gray-500 hover:text-accent text-sm transition">Условия использования</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex justify-end">
+        <div class="bg-darker w-full max-w-md h-full overflow-y-auto transform transition-transform duration-300 translate-x-full">
+            <div class="p-4 md:p-6 border-b border-gray-800 flex justify-between items-center sticky top-0 bg-darker z-10">
+                <h3 class="text-xl font-semibold" id="cartTitle">Корзина (<span id="cartTotalItems">₽0</span>)</h3>
+                <button id="closeCartBtn" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div id="cartItems" class="p-4 md:p-6 space-y-4">
+                <!-- Товары будут добавляться динамически -->
+                <div id="emptyCart" class="text-center py-8">
+                    <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
+                    <p class="text-gray-400">Корзина пуста</p>
+                </div>
+            </div>
+            
+            <div class="p-4 md:p-6 border-t border-gray-800 sticky bottom-0 bg-darker">
+                <div class="flex justify-between mb-4">
+                    <span class="font-medium">Итого:</span>
+                    <span class="font-bold text-xl text-accent" id="cartTotalPrice">₽0</span>
+                </div>
+                <button id="checkoutBtn" class="w-full gradient-btn hover:opacity-90 py-3 rounded-md font-medium transition disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    Оформить заказ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-green-600 text-white px-4 py-3 rounded-lg shadow-lg transform translate-y-full transition-transform duration-300 z-50 hidden">
+        <div class="flex items-center">
+            <i class="fas fa-check-circle mr-2"></i>
+            <span id="toastMessage">Товар добавлен в корзину!</span>
+        </div>
+    </div>
+
+    <script>
+        // ========== КОРЗИНА ==========
+        class Cart {
+            constructor() {
+                this.items = JSON.parse(localStorage.getItem('cart')) || [];
+                this.updateCartUI();
+            }
+
+            addItem(product) {
+                const existingItem = this.items.find(item => item.id === product.id);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    this.items.push({
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        image: product.image,
+                        quantity: 1
+                    });
+                }
+                
+                this.saveCart();
+                this.updateCartUI();
+                this.showToast(`"${product.name}" добавлен в корзину`);
+            }
+
+            removeItem(id) {
+                this.items = this.items.filter(item => item.id !== id);
+                this.saveCart();
+                this.updateCartUI();
+            }
+
+            updateQuantity(id, quantity) {
+                if (quantity < 1) {
+                    this.removeItem(id);
+                    return;
+                }
+                
+                const item = this.items.find(item => item.id === id);
+                if (item) {
+                    item.quantity = quantity;
+                    this.saveCart();
+                    this.updateCartUI();
+                }
+            }
+
+            getTotalItems() {
+                return this.items.reduce((total, item) => total + item.quantity, 0);
+            }
+
+            getTotalPrice() {
+                return this.items.reduce((total, item) => total + (item.price * item.quantity), 0);
+            }
+
+            clearCart() {
+                this.items = [];
+                this.saveCart();
+                this.updateCartUI();
+            }
+
+            saveCart() {
+                localStorage.setItem('cart', JSON.stringify(this.items));
+            }
+
+            updateCartUI() {
+                // Обновляем бейдж корзины
+                const totalItems = this.getTotalItems();
+                const cartBadge = document.getElementById('cartBadge');
+                const cartTitle = document.getElementById('cartTitle');
+                const cartTotalItems = document.getElementById('cartTotalItems');
+                const cartTotalPrice = document.getElementById('cartTotalPrice');
+                const checkoutBtn = document.getElementById('checkoutBtn');
+                const emptyCart = document.getElementById('emptyCart');
+                const cartItems = document.getElementById('cartItems');
+
+                if (cartBadge) {
+                    if (totalItems > 0) {
+                        cartBadge.textContent = totalItems;
+                        cartBadge.classList.remove('hidden');
+                    } else {
+                        cartBadge.classList.add('hidden');
+                    }
+                }
+
+                if (cartTitle && cartTotalItems) {
+                    cartTotalItems.textContent = totalItems;
+                }
+
+                if (cartTotalPrice) {
+                    cartTotalPrice.textContent = `${this.getTotalPrice()}`;
+                }
+
+                if (checkoutBtn) {
+                    checkoutBtn.disabled = totalItems === 0;
+                }
+
+                // Обновляем список товаров в корзине
+                if (cartItems) {
+                    if (this.items.length === 0) {
+                        emptyCart.classList.remove('hidden');
+                        cartItems.innerHTML = '<div id="emptyCart" class="text-center py-8"><i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i><p class="text-gray-400">Корзина пуста</p></div>';
+                    } else {
+                        emptyCart.classList.add('hidden');
+                        cartItems.innerHTML = this.items.map(item => `
+                            <div class="flex border-b border-gray-800 pb-4" data-id="₽${item.id}">
+                                <div class="w-20 h-20 md:w-24 md:h-24 bg-gray-800 rounded-md overflow-hidden flex-shrink-0">
+                                    <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+                                </div>
+                                <div class="ml-4 flex-grow">
+                                    <h4 class="font-medium text-sm md:text-base">₽${item.name}</h4>
+                                    <p class="text-gray-400 text-xs md:text-sm">₽${item.price} × ${item.quantity}</p>
+                                    <div class="flex justify-between items-center mt-2">
+                                        <span class="text-accent font-medium">${item.price * item.quantity}</span>
+                                        <div class="flex items-center border border-gray-700 rounded">
+                                            <button class="decrease-quantity px-2 py-1 text-gray-400 hover:text-white text-sm" data-id="${item.id}">-</button>
+                                            <span class="px-2 text-sm md:text-base">${item.quantity}</span>
+                                            <button class="increase-quantity px-2 py-1 text-gray-400 hover:text-white text-sm" data-id="${item.id}">+</button>
+                                            <button class="remove-item ml-2 px-2 py-1 text-red-400 hover:text-red-300 text-sm" data-id="${item.id}">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+                }
+            }
+
+            showToast(message) {
+                const toast = document.getElementById('toast');
+                const toastMessage = document.getElementById('toastMessage');
+                
+                toastMessage.textContent = message;
+                toast.classList.remove('hidden');
+                toast.classList.remove('translate-y-full');
+                
+                setTimeout(() => {
+                    toast.classList.add('translate-y-full');
+                    setTimeout(() => {
+                        toast.classList.add('hidden');
+                    }, 300);
+                }, 2000);
+            }
+        }
+
+        // Инициализация корзины
+        const cart = new Cart();
+
+        // ========== DOM ОБРАБОТЧИКИ ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            // Мобильное меню
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Корзина модалка
+            const cartBtn = document.getElementById('cartBtn');
+            const cartModal = document.getElementById('cartModal');
+            const closeCartBtn = document.getElementById('closeCartBtn');
+            
+            if (cartBtn && cartModal) {
+                cartBtn.addEventListener('click', () => {
+                    cartModal.classList.remove('hidden');
+                    setTimeout(() => {
+                        document.querySelector('#cartModal > div').classList.remove('translate-x-full');
+                    }, 10);
+                });
+            }
+            
+            if (closeCartBtn) {
+                closeCartBtn.addEventListener('click', () => {
+                    closeCart();
+                });
+            }
+            
+            if (cartModal) {
+                cartModal.addEventListener('click', (e) => {
+                    if (e.target === cartModal) {
+                        closeCart();
+                    }
+                });
+            }
+
+            // Обработчики добавления в корзину
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('add-to-cart') || e.target.closest('.add-to-cart')) {
+                    e.preventDefault();
+                    const button = e.target.classList.contains('add-to-cart') ? e.target : e.target.closest('.add-to-cart');
+                    
+                    const product = {
+                        id: button.dataset.id,
+                        name: button.dataset.name,
+                        price: parseFloat(button.dataset.price),
+                        image: button.dataset.image
+                    };
+                    
+                    cart.addItem(product);
+                    
+                    // Анимация кнопки
+                    const originalHtml = button.innerHTML;
+                    button.innerHTML = '<i class="fas fa-check"></i> Добавлено';
+                    button.classList.add('bg-green-600');
+                    button.disabled = true;
+                    
+                    setTimeout(() => {
+                        button.innerHTML = originalHtml;
+                        button.classList.remove('bg-green-600');
+                        button.disabled = false;
+                    }, 1500);
+                }
+                
+                // Удаление из корзины
+                if (e.target.classList.contains('remove-item') || e.target.closest('.remove-item')) {
+                    const button = e.target.classList.contains('remove-item') ? e.target : e.target.closest('.remove-item');
+                    const id = button.dataset.id;
+                    cart.removeItem(id);
+                }
+                
+                // Увеличение количества
+                if (e.target.classList.contains('increase-quantity') || e.target.closest('.increase-quantity')) {
+                    const button = e.target.classList.contains('increase-quantity') ? e.target : e.target.closest('.increase-quantity');
+                    const id = button.dataset.id;
+                    const item = cart.items.find(item => item.id === id);
+                    if (item) {
+                        cart.updateQuantity(id, item.quantity + 1);
+                    }
+                }
+                
+                // Уменьшение количества
+                if (e.target.classList.contains('decrease-quantity') || e.target.closest('.decrease-quantity')) {
+                    const button = e.target.classList.contains('decrease-quantity') ? e.target : e.target.closest('.decrease-quantity');
+                    const id = button.dataset.id;
+                    const item = cart.items.find(item => item.id === id);
+                    if (item) {
+                        cart.updateQuantity(id, item.quantity - 1);
+                    }
+                }
+            });
+
+            // Кнопка оформления заказа
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            if (checkoutBtn) {
+                checkoutBtn.addEventListener('click', () => {
+                    if (cart.getTotalItems() > 0) {
+                        alert(`Заказ оформлен! Сумма: ${cart.getTotalPrice()}\nТоваров: ${cart.getTotalItems()}`);
+                        cart.clearCart();
+                        closeCart();
+                    }
+                });
+            }
+
+            
+
+            // Закрытие корзины
+            function closeCart() {
+                const modalDiv = document.querySelector('#cartModal > div');
+                if (modalDiv) {
+                    modalDiv.classList.add('translate-x-full');
+                    setTimeout(() => {
+                        cartModal.classList.add('hidden');
+                    }, 300);
+                }
+            }
+        });
+
+        // Обработка изменения размера окна
+        window.addEventListener('resize', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (window.innerWidth >= 768 && mobileMenu) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

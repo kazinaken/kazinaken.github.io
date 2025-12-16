@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus - Мой профиль</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#121212',
+                        darker: '#181e2a',
+                        primary: '#1e40af',
+                        secondary: '#166534',
+                        accent: '#3b82f6',
+                        grei: '#232a39',
+                        wgrei:'#5e5e5e',
+                        dblue:'#111827'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6 0%, #22c55e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-btn {
+            background: linear-gradient(90deg, #3b82f6 0%, #22c55e 100%);
+        }
+        .gradient-bg {
+            background: linear-gradient(90deg, #3b82f6 0%, #22c55e 100%);
+        }
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            font-size: 10px;
+        }
+        .stats-card {
+            transition: all 0.3s ease;
+        }
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .order-card {
+            transition: all 0.2s ease;
+        }
+        .order-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .tab-active {
+            border-bottom: 3px solid #3b82f6;
+            color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-darker text-gray-200 min-h-screen">
+    <!-- Header -->
+   <header class="bg-darker border-b border-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="mk1.html" class="flex items-center space-x-2 hover:opacity-90 transition">
+                    <img src="logo.png" alt="Nexus Logo" class="h-8 w-auto object-contain">
+                    <span class="text-xl font-bold gradient-text hidden sm:inline"></span>
+                </a>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-6 lg:space-x-8">
+                    <a href="mk1.html" class="nav-link font-medium hover:text-accent transition">Главная</a>
+                    <a href="mk2.html" class="nav-link font-medium hover:text-accent transition">Каталог</a>
+                    <a href="mk2.html" class="nav-link font-medium hover:text-accent transition">Новинки</a>
+                    <a href="#" class="nav-link font-medium hover:text-accent transition">О нас</a>
+                </nav>
+                
+                <!-- Cart and Auth -->
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button id="cartBtn" class="text-gray-300 hover:text-accent transition relative">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <span id="cartBadge" class="cart-badge bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                        </button>
+                    </div>
+                    <a href="prof.html" class="text-white text-xl hover:text-accent transition">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                    <button class="md:hidden text-gray-300" id="mobileMenuBtn">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-2">
+                <a href="mk1.html" class="block py-2 hover:text-accent transition">Главная</a>
+                <a href="mk2.html" class="block py-2 hover:text-accent transition">Каталог</a>
+                <a href="mk2.html" class="block py-2 hover:text-accent transition">Новинки</a>
+                <a href="#" class="block py-2 hover:text-accent transition">О нас</a>
+            </div>
+        </div>
+    </header>
+<div class="max-w-6xl mx-auto">
+    <!-- Main Content -->
+    <main class="py-6 md:py-8">
+        <div class="container mx-auto px-4">
+            <!-- Заголовок профиля -->
+            <div class="mb-8">
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-100 mb-2">Мой профиль</h1>
+                <p class="text-gray-400">Управляйте вашей учетной записью и заказами</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- Левая колонка - Информация профиля -->
+                <div class="lg:col-span-1">
+                    <!-- Карточка профиля -->
+                    <div class="bg-grei rounded-xl p-6 mb-6 border border-gray-800">
+                        <div class="flex flex-col items-center mb-6">
+                            <div class="relative mb-4">
+                                <div class="w-24 h-24 rounded-full gradient-bg flex items-center justify-center">
+                                    <span class="text-white text-3xl font-bold">ИИ</span>
+                                </div>
+                                
+                            </div>
+                            <h2 class="text-xl font-bold text-gray-100 mb-1">Иван Иванов</h2>
+                            
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-accent w-6"></i>
+                                <span class="ml-3 text-gray-300">ivan@example.com</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-accent w-6"></i>
+                                <span class="ml-3 text-gray-300">+7 (999) 123-45-67</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-accent w-6"></i>
+                                <span class="ml-3 text-gray-300">Москва, Россия</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-calendar-alt text-accent w-6"></i>
+                                <span class="ml-3 text-gray-300">Зарегистрирован: 15.01.2024</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-6 border-t border-gray-800">
+                            <button class="w-full gradient-btn text-white py-3 rounded-lg font-medium hover:opacity-90 transition mb-3">
+                                Редактировать профиль
+                            </button>
+                            <button class="w-full bg-grei border border-gray-700 text-gray-300 py-3 rounded-lg font-medium hover:bg-gray-800 transition">
+                                Выйти
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Статистика -->
+                    <div class="bg-darker rounded-xl p-6 border border-gray-800">
+                        <h3 class="text-lg font-semibold text-gray-100 mb-4">Статистика</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="stats-card bg-grei rounded-lg p-4 text-center">
+                                <div class="text-2xl font-bold text-accent mb-1">8</div>
+                                <div class="text-sm text-gray-400">Заказов</div>
+                            </div>
+                            <div class="stats-card bg-grei rounded-lg p-4 text-center">
+                                <div class="text-2xl font-bold text-green-500 mb-1">₽71999</div>
+                                <div class="text-sm text-gray-400">Потрачено</div>
+                            </div>
+                            <div class="stats-card bg-grei rounded-lg p-4 text-center">
+                                <div class="text-2xl font-bold text-yellow-500 mb-1">12</div>
+                                <div class="text-sm text-gray-400">Отзывов</div>
+                            </div>
+                            <div class="stats-card bg-grei rounded-lg p-4 text-center">
+                                <div class="text-2xl font-bold text-purple-500 mb-1">3</div>
+                                <div class="text-sm text-gray-400">Возврата</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Правая колонка - Основной контент -->
+                <div class="lg:col-span-2">
+                    <!-- Табы -->
+                    <div class="mb-6 border-b border-gray-800">
+                        <div class="flex space-x-6 overflow-x-auto">
+                            <button class="tab-btn pb-3 font-medium text-gray-300 hover:text-accent transition whitespace-nowrap tab-active" data-tab="orders">
+                                <i class="fas fa-shopping-bag mr-2"></i>Мои заказы
+                            </button>
+                            <button class="tab-btn pb-3 font-medium text-gray-300 hover:text-accent transition whitespace-nowrap" data-tab="favorites">
+                                <i class="fas fa-heart mr-2"></i>Избранное
+                            </button>
+                            <button class="tab-btn pb-3 font-medium text-gray-300 hover:text-accent transition whitespace-nowrap" data-tab="reviews">
+                                <i class="fas fa-star mr-2"></i>Мои отзывы
+                            </button>
+                            
+                        </div>
+                    </div>
+
+                    <!-- Контент табов -->
+                    <div id="tabContent">
+                        <!-- Таб: Мои заказы -->
+                        <div id="ordersTab" class="tab-pane active">
+                            <h3 class="text-lg font-semibold text-gray-100 mb-4">Активные заказы</h3>
+                              
+                            <!-- Заказ 1 -->
+                            <div class="order-card bg-grei rounded-lg p-4 mb-4 border border-gray-800 cursor-pointer hover:border-accent">
+                                <div class="flex justify-between items-start mb-3">
+                                    <div>
+                                        <h4 class="font-semibold text-gray-100">Заказ #NX-2025-0012</h4>
+                                        <p class="text-sm text-gray-400">Создан: 15.01.2025</p>
+                                    </div>
+                                    <span class="bg-green-500/20 text-green-400 text-xs font-medium px-3 py-1 rounded-full">Доставляется</span>
+                                </div>
+                                
+                                <div class="flex items-center mb-4">
+                                    <div class="w-16 h-16 bg-gray-800 rounded-md overflow-hidden mr-4">
+                                        <img src="noyt2.png" 
+                                             alt="Смартфон" 
+                                             class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <h5 class="font-medium text-gray-100">Ноутбук </h5>
+                                        <p class="text-sm text-gray-400">Количество: 1 × ₽71999</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex justify-between items-center">
+                                    <div class="text-lg font-bold text-accent">71999 ₽</div>
+                                    <div class="flex space-x-2">
+                                        <button class="text-sm text-accent hover:text-blue-400 transition">Подробнее</button>
+                                        <button class="text-sm text-green-500 hover:text-green-400 transition">Отследить</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+    <!-- Footer -->
+
+    <footer class="bg-darker border-t border-gray-800 pt-8 md:pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">О нас</h3>
+                    <p class="text-gray-400 mb-4 text-sm">Лучший магазин электроники с 2020 года.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Магазин</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition text-sm">Все товары</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition text-sm">Новинки</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition text-sm">Популярное</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition text-sm">Акции</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Помощь</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition text-sm">Доставка</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition text-sm">Оплата</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition text-sm">Возврат</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition text-sm">Контакты</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Контакты</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-accent"></i> Москва, ул. Примерная, 123
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2 text-accent"></i> +7 (123) 456-78-90
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-accent"></i> info@nexus.ru
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-2 text-accent"></i> Пн-Пт: 10:00 - 20:00
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 Nexus. Все права защищены.</p>
+                <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
+                    <a href="#" class="text-gray-500 hover:text-accent text-sm transition">Политика конфиденциальности</a>
+                    <a href="#" class="text-gray-500 hover:text-accent text-sm transition">Условия использования</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // ========== ТАБЫ ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            // Переключение табов
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Убираем активный класс у всех кнопок
+                    tabBtns.forEach(b => b.classList.remove('tab-active'));
+                    // Добавляем активный класс нажатой кнопке
+                    btn.classList.add('tab-active');
+                    
+                    // Скрываем все табы
+                    tabPanes.forEach(pane => pane.classList.add('hidden'));
+                    
+                    // Показываем нужный таб
+                    const tabId = btn.getAttribute('data-tab') + 'Tab';
+                    document.getElementById(tabId).classList.remove('hidden');
+                });
+            });
+
+            // Мобильное меню
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Корзина (имитация функционала)
+            const cartBtn = document.getElementById('cartBtn');
+            if (cartBtn) {
+                cartBtn.addEventListener('click', () => {
+                    alert('Корзина. В реальном приложении здесь будет модальное окно с корзиной.');
+                });
+            }
+
+            // Имитация данных профиля
+            const userData = {
+                name: 'Иван Иванов',
+                email: 'ivan@example.com',
+                phone: '+7 (999) 123-45-67',
+                joined: '15.01.2024',
+                orders: 8,
+                spent: '₽71999',
+                reviews: 12,
+                returns: 3
+            };
+
+            // Обновление данных статистики
+            function updateStats() {
+                document.querySelectorAll('.stats-card')[0].querySelector('div:first-child').textContent = userData.orders;
+                document.querySelectorAll('.stats-card')[1].querySelector('div:first-child').textContent = userData.spent;
+                document.querySelectorAll('.stats-card')[2].querySelector('div:first-child').textContent = userData.reviews;
+                document.querySelectorAll('.stats-card')[3].querySelector('div:first-child').textContent = userData.returns;
+            }
+
+            updateStats();
+
+            // Обработка формы настроек
+            const settingsForm = document.querySelector('#settingsTab form');
+            if (settingsForm) {
+                settingsForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    // Обновляем данные пользователя
+                    userData.name = settingsForm.querySelector('input[type="text"]').value;
+                    userData.email = settingsForm.querySelector('input[type="email"]').value;
+                    userData.phone = settingsForm.querySelector('input[type="tel"]').value;
+                    
+                    // Обновляем отображение
+                    document.querySelector('.text-xl.font-bold.text-gray-100').textContent = userData.name;
+                    document.querySelector('.flex.items-center:nth-child(1) span').textContent = userData.email;
+                    document.querySelector('.flex.items-center:nth-child(2) span').textContent = userData.phone;
+                    
+                    alert('Настройки сохранены успешно!');
+                });
+            }
+
+            // Кнопка выхода
+            const logoutBtn = document.querySelector('button:contains("Выйти")');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', () => {
+                    if (confirm('Вы уверены, что хотите выйти?')) {
+                        window.location.href = 'login.html';
+                    }
+                });
+            }
+
+            // Обработка кликов по карточкам заказов
+            document.querySelectorAll('.order-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    alert('Подробная информация о заказе. В реальном приложении здесь будет переход на страницу заказа.');
+                });
+            });
+        });
+
+        // Обработка изменения размера окна
+        window.addEventListener('resize', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (window.innerWidth >= 768 && mobileMenu) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

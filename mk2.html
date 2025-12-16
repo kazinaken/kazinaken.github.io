@@ -1,0 +1,447 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Nexus Каталог
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap" rel="stylesheet"/>
+ 
+     <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#121212',
+                        darker: '#181e2a',
+                        primary: '#1e40af',
+                        secondary: '#166534',
+                        accent: '#3b82f6',
+                        grei: '#232a39',
+                        wgrei:'#5e5e5e',
+                        dblue:'#111827'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+         .gradient-cat {
+        background: linear-gradient(90deg, #3b82f6 0%, #22c55e 100%);
+      }
+      .gradient-cat-icon {
+        background: linear-gradient(90deg, #3b82f6 0%, #22c55e 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .gradient-text {
+        background: linear-gradient(90deg, #3b82f6 0%, #22c55e 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .gradient-btn {
+        background: linear-gradient(90deg, #3b82f6 0%, #22c55e 100%);
+      }
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            font-size: 10px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 0.5s ease-out;
+        }
+          @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.75rem;
+            }
+            .section-padding {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+        @media (max-width: 640px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-title {
+                font-size: 1.5rem;
+            }
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+        }
+    </style>
+ </head>
+ <body class="bg-[#151C27] min-h-screen flex flex-col justify-between">
+  <!-- Header -->
+  <header class="bg-darker border-b border-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="mk1.html" class="flex items-center space-x-2 hover:opacity-90 transition">
+                    <img src="logo.png" alt="Nexus Logo" class="h-8 w-auto object-contain">
+                    <span class="text-xl font-bold gradient-text hidden sm:inline"></span>
+                </a>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-6 lg:space-x-8">
+                    <a href="mk1.html" class="nav-link font-medium hover:text-accent transition text-white">Главная</a>
+                    <a href="mk2.html" class="nav-link font-medium hover:text-accent transition text-white">Каталог</a>
+                    <a href="mk2.html" class="nav-link font-medium hover:text-accent transition text-white">Новинки</a>
+                    <a href="#" class="nav-link font-medium hover:text-accent transition text-white">О нас</a>
+                </nav>
+                
+                <!-- Cart and Auth -->
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button id="cartBtn" class="text-gray-300 hover:text-accent transition relative">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <span id="cartBadge" class="cart-badge bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                        </button>
+                    </div>
+                    <a href="prof.html" class="text-white text-xl hover:text-accent transition">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                    <button class="md:hidden text-gray-300" id="mobileMenuBtn">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-2">
+                <a href="mk1.html" class="block py-2 hover:text-accent transition">Главная</a>
+                <a href="mk2.html" class="block py-2 hover:text-accent transition">Каталог</a>
+                <a href="mk2.html" class="block py-2 hover:text-accent transition">Новинки</a>
+                <a href="#" class="block py-2 hover:text-accent transition">О нас</a>
+            </div>
+        </div>
+    </header>
+  <!-- Main Content -->
+    <!-- Search -->
+    <section class="w-full px-6 pt-6 pb-8 bg-[#181e2a]">
+   <div class="max-w-6xl mx-auto">
+    <div class="w-full mb-4">
+     <div class="relative">
+      <input class="w-full bg-[#232a39] text-white rounded-md py-2 pl-4 pr-10 text-base outline-none" placeholder="Поиск" type="text"/>
+      <span class="absolute right-3 top-2.5 text-gray-400 text-lg">
+       <i class="fas fa-search">
+       </i>
+      </span>
+     </div>
+    </div>
+    <div class="max-w-6xl mx-auto">
+  <main class="flex-1 w-full max-w-[1440px] mx-auto px-4 pt-6 pb-16">
+   <div class="flex">
+    <!-- Sidebar Filters -->
+    <aside class="w-48 flex-shrink-0 space-y-4 mr-6 ">
+     <button class="w-full flex items-center justify-between bg-[#1B2332]  text-[#B6C2D9] text-base font-normal rounded px-4 py-2 mb-2 border border-[#2A3342] hover:bg-[#232B3A] transition">
+      <i class="fas fa-arrow-down">
+      </i>
+      <span>
+       Цена
+      </span>
+     </button>
+     <button class="w-full flex items-center justify-between bg-[#1B2332] text-[#B6C2D9] text-base font-normal rounded px-4 py-2 mb-2 border border-[#2A3342] hover:bg-[#232B3A] transition">
+      <i class="fas fa-arrow-down">
+      </i>
+      <span>
+       Акция
+      </span>
+     </button>
+     <button class="w-full flex items-center justify-between bg-[#1B2332] text-[#B6C2D9] text-base font-normal rounded px-4 py-2 mb-2 border border-[#2A3342] hover:bg-[#232B3A] transition">
+      <i class="fas fa-arrow-down">
+      </i>
+      <span>
+       Бренд
+      </span>
+     </button>
+     <button class="w-full flex items-center justify-between bg-[#1B2332] text-[#B6C2D9] text-base font-normal rounded px-4 py-2 mb-2 border border-[#2A3342] hover:bg-[#232B3A] transition">
+      <i class="fas fa-arrow-down">
+      </i>
+      <span>
+       Год релиза
+      </span>
+     </button>
+     <button class="w-full flex items-center justify-between bg-[#1B2332] text-[#B6C2D9] text-base font-normal rounded px-4 py-2 border border-[#2A3342] hover:bg-[#232B3A] transition">
+      <i class="fas fa-arrow-down">
+      </i>
+      <span>
+       Все фильтры
+      </span>
+     </button>
+    </aside>
+    <!-- Main Section -->
+    <section class="flex-1">
+
+     
+     <!-- Banner -->
+     <div class="w-full h-32 rounded-lg mb-4" style="background: linear-gradient(90deg, #1B3A6B 0%, #1B6B4A 100%);">
+     </div>
+     <!-- Sort and View -->
+     <div class="flex items-center mb-2">
+      <button class="flex items-center bg-[#232B3A] text-[#B6C2D9] text-base font-normal rounded px-4 py-2 mr-2 border border-[#2A3342]">
+       <i class="fas fa-sort-amount-down mr-2">
+       </i>
+       Популярные
+      </button>
+      <label class="flex items-center bg-[#232B3A] text-[#B6C2D9] text-base font-normal rounded px-4 py-2 mr-2 border border-[#2A3342] cursor-pointer">
+       <input checked="" class="form-checkbox accent-[#0DE2E2] mr-2" type="checkbox"/>
+       В наличии
+      </label>
+      
+     </div>
+     <hr class="border-[#2A3342] mb-4"/>
+     <!-- Product List -->
+     <div class="space-y-4">
+      <!-- Product 1 -->
+        
+     <a href="straniwf.html" class="block w-full hover:opacity-95 transition duration-200">
+  <div class="flex bg-[#232B3A] rounded-lg overflow-hidden border border-[#2A3342] hover:border-accent cursor-pointer">
+    <div class="w-40 h-32 flex-shrink-0 flex items-center justify-center bg-[#1B2332]">
+      <img 
+        alt="Фото ноутбука ASUS TUF Gaming, вид спереди, серый корпус, клавиатура с подсветкой" 
+        class="w-36 h-28 object-contain" 
+        height="120" 
+        src="noyt2.png" 
+        width="160"
+      />
+    </div>
+    <div class="flex-1 p-3 flex flex-col justify-between">
+      <div>
+        <div class="text-xs text-[#B6C2D9] font-normal leading-tight">
+          17.3" Ноутбук ASUS TUF Gaming F17 FX707ZC4-HX014 серый (английская/русская раскладка, 1920x1080, IPS, Intel Core i5-12500H, ядра: 4 + 8 / 2.5 ГГц, RAM 16 ГБ, SSD 512 ГБ, GeForce RTX 3050 для ноутбуков, 4 ГБ, без ОС)
+        </div>
+      </div>
+      <div class="flex items-center mt-2">
+        <div class="flex items-center bg-gradient-to-r from-accent to-secondary rounded px-2 py-1 mr-2">
+          <i class="fas fa-star text-white text-xs mr-1"></i>
+          <span class="text-white text-xs font-bold">4.78</span>
+        </div>
+        <span class="text-[#B6C2D9] text-xs mr-4">697 отзыв</span>
+        <span class="ml-auto text-accent text-lg font-bold mr-4 line-through opacity-60">91 999 ₽</span>
+        <span class="text-white text-2xl font-bold mr-4">71 999 ₽</span>
+        <button 
+          class="bg-gradient-to-r from-accent to-secondary hover:bg-[#159C6B] text-white text-base font-bold rounded px-4 py-2 transition"
+          onclick="event.stopPropagation(); addToCart('product-id');"
+        >
+          В корзину
+        </button>
+      </div>
+    </div>
+  </div>
+</a>
+      <!-- Product 2 -->
+      <div class="flex bg-[#232B3A] rounded-lg overflow-hidden border border-[#2A3342]">
+       <div class="w-40 h-32 flex-shrink-0 flex items-center justify-center bg-[#1B2332]">
+        <img alt="Фото ноутбука MSI Katana, вид спереди, черный корпус, клавиатура с красной подсветкой, арт на экране" class="w-36 h-28 object-contain" height="120" src="noyt1.png"/>
+       </div>
+       <div class="flex-1 p-3 flex flex-col justify-between">
+        <div>
+         <div class="text-xs text-[#B6C2D9] font-normal leading-tight">
+          17.3" Ноутбук MSI Katana GF76 B12UDXR-082RU черный (английская/русская раскладка, 1920x1080, IPS, Intel Core i5-12450H, ядра: 4 + 4 / 2.5 ГГц, RAM 16 ГБ, SSD 512 ГБ, GeForce RTX 3050 для ноутбуков, 4 ГБ, без ОС)
+         </div>
+        </div>
+        <div class="flex items-center mt-2">
+         <div class="flex items-center bg-gradient-to-r from-accent to-secondary rounded px-2 py-1 mr-2">
+          <i class="fas fa-star text-white text-xs mr-1">
+          </i>
+          <span class="text-white text-xs font-bold">
+           4.78
+          </span>
+         </div>
+         <span class="text-[#B6C2D9] text-xs mr-4">
+          775 отзыв
+         </span>
+         <span class="ml-auto text-white text-2xl font-bold mr-4">
+          88 999 ₽
+         </span>
+         <button class="bg-gradient-to-r from-accent to-secondary hover:bg-[#159C6B] text-white text-base font-bold rounded px-4 py-2 transition">
+          В корзину
+         </button>
+        </div>
+       </div>
+      </div>
+      <!-- Product 3 -->
+      <div class="flex bg-[#232B3A] rounded-lg overflow-hidden border border-[#2A3342]">
+       <div class="w-40 h-32 flex-shrink-0 flex items-center justify-center bg-[#1B2332]">
+        <img alt="Фото ноутбука MSI Katana 17, вид спереди, черный корпус, золотой логотип, клавиатура с подсветкой" class="w-36 h-28 object-contain" height="120" src="noyt3.png"/>
+       </div>
+       <div class="flex-1 p-3 flex flex-col justify-between">
+        <div>
+         <div class="text-xs text-[#B6C2D9] font-normal leading-tight">
+          17.3" Ноутбук MSI Katana 17 HX B14VGK-053XRU черный (английская/русская раскладка, 1920x1080, IPS, Intel Core i7-14650HX, ядра: 8 + 8 / 2.2 ГГц, RAM 32 ГБ, SSD 1000 ГБ, GeForce RTX 5070 для ноутбуков, 8 ГБ, без ОС)
+         </div>
+        </div>
+        <div class="flex items-center mt-2">
+         <div class="flex items-center bg-gradient-to-r from-accent to-secondary rounded px-2 py-1 mr-2">
+          <i class="fas fa-star text-white text-xs mr-1">
+          </i>
+          <span class="text-white text-xs font-bold">
+           4.8
+          </span>
+         </div>
+         <span class="text-[#B6C2D9] text-xs mr-4">
+          37 отзыв
+         </span>
+         <span class="ml-auto text-white text-2xl font-bold mr-4">
+          149 999 ₽
+         </span>
+         <button class="bg-gradient-to-r from-accent to-secondary hover:bg-[#159C6B] text-white text-base font-bold rounded px-4 py-2 transition">
+          В корзину
+         </button>
+        </div>
+       </div>
+      </div>
+      <!-- Product 4 -->
+      <div class="flex bg-[#232B3A] rounded-lg overflow-hidden border border-[#2A3342]">
+       <div class="w-40 h-32 flex-shrink-0 flex items-center justify-center bg-[#1B2332]">
+        <img alt="Фото ноутбука ASUS TUF Gaming 16, вид спереди, черный корпус, клавиатура с красной подсветкой" class="w-36 h-28 object-contain" height="120" src="noyt4.png"/>
+       </div>
+       <div class="flex-1 p-3 flex flex-col justify-between">
+        <div>
+         <div class="text-xs text-[#B6C2D9] font-normal leading-tight">
+          16" Ноутбук ASUS TUF Gaming FA607NU-NL084 черный (английская/русская раскладка, 1920x1200, IPS, Intel Core i5-13500H, ядра: 4 + 8 / 2.6 ГГц, RAM 16 ГБ, SSD 512 ГБ, GeForce RTX 4050 для ноутбуков, 6 ГБ, без ОС)
+         </div>
+        </div>
+        <div class="flex items-center mt-2">
+         <div class="flex items-center bg-gradient-to-r from-accent to-secondary rounded px-2 py-1 mr-2">
+          <i class="fas fa-star text-white text-xs mr-1">
+          </i>
+          <span class="text-white text-xs font-bold">
+           4.8
+          </span>
+         </div>
+         <span class="text-[#B6C2D9] text-xs mr-4">
+          50 отзыв
+         </span>
+         <span class="ml-auto text-white text-2xl font-bold mr-4">
+          84 999 ₽
+         </span>
+         <button class="bg-gradient-to-r from-accent to-secondary hover:bg-[#159C6B] text-white text-base font-bold rounded px-4 py-2 transition">
+          В корзину
+         </button>
+        </div>
+       </div>
+      </div>
+     </div>
+     <!-- Pagination -->
+     <div class="flex justify-center mt-8">
+      <div class="flex items-center space-x-2">
+       <button class="w-10 h-10 flex items-center justify-center bg-[#232B3A] rounded border border-[#2A3342] text-[#B6C2D9]">
+        <i class="fas fa-arrow-left">
+        </i>
+       </button>
+       <span class="w-10 h-10 flex items-center justify-center bg-accent text-white text-lg font-bold rounded border border-[#2A3342]">
+        1
+       </span>
+       <button class="w-10 h-10 flex items-center justify-center bg-[#232B3A] rounded border border-[#2A3342] text-[#B6C2D9]">
+        <i class="fas fa-arrow-right">
+        </i>
+       </button>
+      </div>
+     </div>
+    </section>
+   </div>
+  </main>
+  </div>
+  <!-- Footer -->
+   <div class="absolute left-1/2 -translate-x-1/2 w-screen">
+      <footer class="bg-darker border-t border-gray-800 pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- About -->
+                <div>
+                    
+                    <p class="text-gray-400 mb-4">Лучший магазин электроники.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">Магазин</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Все товары</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Новинки</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Популярное</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Акции</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Подарочные сертификаты</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Customer Service -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">Помощь</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Доставка</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Оплата</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Возврат</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Контакты</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contacts -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">Контакты</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-accent"></i> Москва, ул. Примерная, 123
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2 text-accent"></i> +7 (123) 456-78-90
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-accent"></i> info@nexus.ru
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-2 text-accent"></i> Пн-Пт: 10:00 - 20:00
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+            <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 Nexus. Все права защищены.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-accent text-sm transition">Политика конфиденциальности</a>
+                    <a href="#" class="text-gray-500 hover:text-accent text-sm transition">Условия использования</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+  
+ </body>
+</html>

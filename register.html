@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus - Регистрация</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#121212',
+                        darker: '#181e2a',
+                        primary: '#1e40af',
+                        secondary: '#166534',
+                        accent: '#3b82f6',
+                        grei: '#232a39',
+                        wgrei:'#5e5e5e',
+                        dblue:'#111827'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6 0%, #22c55e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-btn {
+            background: linear-gradient(90deg, #3b82f6 0%, #22c55e 100%);
+        }
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .error-message {
+            color: #f87171;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-darker text-gray-200 min-h-screen flex flex-col">
+    <!-- Header (такой же как на главной) -->
+    <header class="bg-darker border-b border-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-2 hover:opacity-90 transition">
+                    <img src="logo.png" alt="Nexus Logo" class="h-8 w-auto object-contain">
+                    <span class="text-xl font-bold gradient-text hidden sm:inline"></span>
+                </a>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-6 lg:space-x-8">
+                    <a href="index.html" class="nav-link font-medium hover:text-accent transition">Главная</a>
+                    <a href="katalog.html" class="nav-link font-medium hover:text-accent transition">Каталог</a>
+                    <a href="katalog.html" class="nav-link font-medium hover:text-accent transition">Новинки</a>
+                    <a href="#" class="nav-link font-medium hover:text-accent transition">О нас</a>
+                </nav>
+                
+                <!-- Cart and Auth -->
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button id="cartBtn" class="text-gray-300 hover:text-accent transition relative">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <span id="cartBadge" class="cart-badge bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                        </button>
+                    </div>
+                    <a href="login.html" class="text-white text-xl hover:text-accent transition">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                    <button class="md:hidden text-gray-300" id="mobileMenuBtn">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-2">
+                <a href="index.html" class="block py-2 hover:text-accent transition">Главная</a>
+                <a href="katalog.html" class="block py-2 hover:text-accent transition">Каталог</a>
+                <a href="katalog.html" class="block py-2 hover:text-accent transition">Новинки</a>
+                <a href="#" class="block py-2 hover:text-accent transition">О нас</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="flex-grow flex items-center justify-center py-12 px-4">
+        <div class="w-full max-w-md">
+            <!-- Блок регистрации -->
+            <div class="bg-grei rounded-xl shadow-lg p-8">
+                <!-- Заголовок -->
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-gray-100 mb-2">
+                        Создать аккаунт
+                    </h2>
+                </div>
+
+                <!-- Форма -->
+                <form id="registerForm" class="space-y-6">
+                    <!-- Имя -->
+                    <div>
+                        <label class="block text-gray-300 text-sm font-medium mb-2" for="name">
+                            Имя
+                        </label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            required
+                            class="w-full bg-grei border border-gray-700 rounded-lg py-3 px-4 text-gray-200 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                            placeholder="Введите ваше имя"
+                        >
+                        <div id="nameError" class="error-message text-red-400 text-sm mt-1">
+                            Пожалуйста, введите ваше имя
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label class="block text-gray-300 text-sm font-medium mb-2" for="email">
+                            Email
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            required
+                            class="w-full bg-grei border border-gray-700 rounded-lg py-3 px-4 text-gray-200 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                            placeholder="Введите email"
+                        >
+                        <div id="emailError" class="error-message text-red-400 text-sm mt-1">
+                            Пожалуйста, введите email
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div>
+                        <label class="block text-gray-300 text-sm font-medium mb-2" for="password">
+                            Пароль
+                        </label>
+                        <div class="relative">
+                            <input 
+                                type="password" 
+                                id="password" 
+                                required
+                                class="w-full bg-grei border border-gray-700 rounded-lg py-3 px-4 pr-10 text-gray-200 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                                placeholder="Придумайте пароль"
+                            >
+                            <button type="button" class="absolute right-3 top-3 text-gray-400 hover:text-gray-300" id="togglePassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div id="passwordError" class="error-message text-red-400 text-sm mt-1">
+                            Пароль должен быть не менее 6 символов
+                        </div>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div>
+                        <label class="block text-gray-300 text-sm font-medium mb-2" for="confirmPassword">
+                            Подтвердите пароль
+                        </label>
+                        <input 
+                            type="password" 
+                            id="confirmPassword" 
+                            required
+                            class="w-full bg-grei border border-gray-700 rounded-lg py-3 px-4 text-gray-200 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                            placeholder="Повторите пароль"
+                        >
+                        <div id="confirmPasswordError" class="error-message text-red-400 text-sm mt-1">
+                            Пароли не совпадают
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="button" id="registerButton" class="w-full gradient-btn text-white font-medium py-3 px-4 rounded-lg hover:opacity-90 transition duration-300">
+                       Зарегистрироваться
+                    </button>
+
+                    <!-- Divider -->
+                    <div class="relative my-6">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-700"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-4 bg-grei text-gray-400">или</span>
+                        </div>
+                    </div>
+
+                </form>
+
+                <!-- Ссылка на вход -->
+                <div class="mt-8 text-center">
+                    <p class="text-gray-400">
+                        Уже есть аккаунт? 
+                        <a href="login.html" class="text-accent hover:text-green-500 font-medium transition ml-1">
+                            Войти
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-darker border-t border-gray-800 pt-12 pb-6 mt-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- About -->
+                <div>
+                    <p class="text-gray-400 mb-4">Лучший магазин электроники.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Магазин</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Все товары</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Новинки</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Популярное</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Акции</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Подарочные сертификаты</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Customer Service -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Помощь</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Доставка</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Оплата</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Возврат</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Контакты</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contacts -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Контакты</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-accent"></i> Москва, ул. Примерная, 123
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2 text-accent"></i> +7 (123) 456-78-90
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-accent"></i> info@nexus.ru
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-2 text-accent"></i> Пн-Пт: 10:00 - 20:00
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 Nexus. Все права защищены.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-accent text-sm transition">Политика конфиденциальности</a>
+                    <a href="#" class="text-gray-500 hover:text-accent text-sm transition">Условия использования</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Показать/скрыть пароль
+            const togglePassword = document.getElementById('togglePassword');
+            const password = document.getElementById('password');
+            
+            if (togglePassword && password) {
+                togglePassword.addEventListener('click', function() {
+                    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                    password.setAttribute('type', type);
+                    this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+                });
+            }
+
+            // Очистка ошибок при вводе
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            
+            if (nameInput) {
+                nameInput.addEventListener('input', function() {
+                    document.getElementById('nameError').style.display = 'none';
+                });
+            }
+            
+            if (emailInput) {
+                emailInput.addEventListener('input', function() {
+                    document.getElementById('emailError').style.display = 'none';
+                });
+            }
+            
+            if (passwordInput) {
+                passwordInput.addEventListener('input', function() {
+                    document.getElementById('passwordError').style.display = 'none';
+                    document.getElementById('confirmPasswordError').style.display = 'none';
+                });
+            }
+            
+            if (confirmPasswordInput) {
+                confirmPasswordInput.addEventListener('input', function() {
+                    document.getElementById('confirmPasswordError').style.display = 'none';
+                });
+            }
+
+            // Обработчик для кнопки "Зарегистрироваться"
+            const registerButton = document.getElementById('registerButton');
+            
+            if (registerButton) {
+                registerButton.addEventListener('click', function() {
+                    // Скрываем предыдущие ошибки
+                    document.getElementById('nameError').style.display = 'none';
+                    document.getElementById('emailError').style.display = 'none';
+                    document.getElementById('passwordError').style.display = 'none';
+                    document.getElementById('confirmPasswordError').style.display = 'none';
+                    
+                    // Получаем значения полей
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const passwordVal = document.getElementById('password').value;
+                    const confirmPasswordVal = document.getElementById('confirmPassword').value;
+                    
+                    let hasError = false;
+                    
+                    // Проверка имени
+                    if (!name) {
+                        document.getElementById('nameError').style.display = 'block';
+                        hasError = true;
+                    }
+                    
+                    // Проверка email
+                    if (!email) {
+                        document.getElementById('emailError').style.display = 'block';
+                        hasError = true;
+                    }
+                    
+                    // Проверка пароля
+                    if (!passwordVal) {
+                        document.getElementById('passwordError').textContent = 'Пожалуйста, введите пароль';
+                        document.getElementById('passwordError').style.display = 'block';
+                        hasError = true;
+                    } else if (passwordVal.length < 6) {
+                        document.getElementById('passwordError').textContent = 'Пароль должен быть не менее 6 символов';
+                        document.getElementById('passwordError').style.display = 'block';
+                        hasError = true;
+                    }
+                    
+                    // Проверка подтверждения пароля
+                    if (!confirmPasswordVal) {
+                        document.getElementById('confirmPasswordError').textContent = 'Пожалуйста, подтвердите пароль';
+                        document.getElementById('confirmPasswordError').style.display = 'block';
+                        hasError = true;
+                    } else if (passwordVal !== confirmPasswordVal) {
+                        document.getElementById('confirmPasswordError').textContent = 'Пароли не совпадают';
+                        document.getElementById('confirmPasswordError').style.display = 'block';
+                        hasError = true;
+                    }
+                    
+                    // Если ошибок нет, переходим на login.html
+                    if (!hasError) {
+                        window.location.href = 'login.html';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

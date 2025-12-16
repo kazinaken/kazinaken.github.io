@@ -1,0 +1,303 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Ноутбук ASUS TUF Gaming F17 FX707ZC4-HX014 серый
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <!-- CSS только -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+   <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#121212',
+                        darker: '#181e2a',
+                        primary: '#1e40af',
+                        secondary: '#166534',
+                        accent: '#3b82f6',
+                        grei: '#232a39',
+                        wgrei:'#5e5e5e',
+                        dblue:'#111827'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+         .gradient-cat {
+        background: linear-gradient(90deg, #3b82f6 0%, #22c55e 100%);
+      }
+      .gradient-cat-icon {
+        background: linear-gradient(90deg, #3b82f6 0%, #22c55e 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .gradient-text {
+        background: linear-gradient(90deg, #3b82f6 0%, #22c55e 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .gradient-btn {
+        background: linear-gradient(90deg, #3b82f6 0%, #22c55e 100%);
+      }
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            font-size: 10px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+ </head>
+ <body class="bg-[#232837] text-white min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-darker border-b border-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="mk1.html" class="flex items-center space-x-2 hover:opacity-90 transition">
+                    <img src="logo.png" alt="Nexus Logo" class="h-8 w-auto object-contain">
+                    <span class="text-xl font-bold gradient-text hidden sm:inline"></span>
+                </a>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-6 lg:space-x-8">
+                    <a href="mk1.html" class="nav-link font-medium hover:text-accent transition">Главная</a>
+                    <a href="mk2.html" class="nav-link font-medium hover:text-accent transition">Каталог</a>
+                    <a href="mk2.html" class="nav-link font-medium hover:text-accent transition">Новинки</a>
+                    <a href="#" class="nav-link font-medium hover:text-accent transition">О нас</a>
+                </nav>
+                
+                <!-- Cart and Auth -->
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button id="cartBtn" class="text-gray-300 hover:text-accent transition relative">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <span id="cartBadge" class="cart-badge bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                        </button>
+                    </div>
+                    <a href="prof.html" class="text-white text-xl hover:text-accent transition">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                    <button class="md:hidden text-gray-300" id="mobileMenuBtn">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-2">
+                <a href="mk1.html" class="block py-2 hover:text-accent transition">Главная</a>
+                <a href="mk2.html" class="block py-2 hover:text-accent transition">Каталог</a>
+                <a href="mk2.html" class="block py-2 hover:text-accent transition">Новинки</a>
+                <a href="#" class="block py-2 hover:text-accent transition">О нас</a>
+            </div>
+        </div>
+    </header>
+  <!-- Search -->
+   <section class="w-full px-6 pt-6 pb-8 bg-[#181e2a]">
+   <div class="max-w-6xl mx-auto">
+    <div class="w-full mb-4">
+     <div class="relative">
+      <input class="w-full bg-[#232a39] text-white rounded-md py-2 pl-4 pr-10 text-base outline-none" placeholder="Поиск" type="text"/>
+      <span class="absolute right-3 top-2.5 text-gray-400 text-lg">
+       <i class="fas fa-search">
+       </i>
+      </span>
+     </div>
+    </div>
+  <!-- Main Content -->
+  <main class="flex-1 w-full max-w-[1440px] mx-auto px-6 py-4">
+   <div class="flex">
+    <!-- Left Sidebar Thumbnails -->
+    <div class="flex flex-col space-y-4 mr-6 mt-2">
+     <div class="w-[80px] h-[80px] rounded-md overflow-hidden border-2 border-[#b0b0b0]">
+      <img alt="Миниатюра ноутбука ASUS TUF Gaming, вид спереди, темный фон" class="w-full h-full object-cover" height="80" src="noyt2korobka.png"/>
+     </div>
+     <div class="w-[80px] h-[80px] rounded-md overflow-hidden border border-[#3a3e4c]">
+      <img alt="Миниатюра ноутбука ASUS TUF Gaming, вид сбоку, темный фон" class="w-full h-full object-cover" height="80" src="noyt2sboky.png"/>
+     </div>
+     <div class="w-[80px] h-[80px] rounded-md overflow-hidden border border-[#3a3e4c]">
+      <img alt="Миниатюра ноутбука ASUS TUF Gaming, открытый, темный фон" class="w-full h-full object-cover" height="80" src="noyt2snizy.png"/>
+     </div>
+     <div class="w-[80px] h-[80px] rounded-md overflow-hidden border border-[#3a3e4c]">
+      <img alt="Миниатюра коробки ноутбука ASUS TUF Gaming, темный фон" class="w-full h-full object-cover" height="80" src="noyt2sverxy.png"/>
+     </div>
+    </div>
+    <!-- Product Main Info -->
+    <div class="flex-1 bg-[#232a39] rounded-xl p-6 flex flex-col">
+     <div class="flex items-start">
+      <div class="w-[350px] h-[220px] rounded-lg overflow-hidden border border-[#3a3e4c] flex-shrink-0">
+       <img alt="Основное изображение ноутбука ASUS TUF Gaming, вид спереди, экран с логотипом TUF, темный фон" class="w-full h-full object-cover" height="220" src="noyt2.png"/>
+      </div>
+      <div class="ml-8 flex-1 flex flex-col">
+       <div class="flex items-center justify-between">
+        <h1 class="text-2xl font-bold text-[#fff] mb-2" style="font-family: 'Roboto', Arial, sans-serif;">
+         17.3" Ноутбук ASUS TUF Gaming F17 FX707ZC4-HX014 серый
+        </h1>
+       
+       </div>
+       <div class="text-[#b0b0b0] text-sm leading-snug mb-3">
+        английская/русская раскладка, 1920x1080, IPS, Intel Core i5-12500H, ядра: 4 + 8 x 2.5 ГГц + 1.8 ГГц, RAM 16 ГБ, SSD 512 ГБ, GeForce RTX 3050 для ноутбуков, 4 ГБ, без ОС 
+       </div>
+       <div class="flex items-center space-x-4 mb-4">
+        <div class="flex items-center bg-gradient-to-r from-accent to-secondary rounded px-2 py-1 text-xs font-bold text-white">
+         <i class="fas fa-star text-white mr-1">
+         </i>
+         4.78
+        </div>
+        <div class="flex items-center bg-[#232837] rounded px-2 py-1 text-xs font-bold text-[#b0b0b0]">
+         697 отзывов
+        </div>
+       </div>
+       <div class="flex items-center mt-auto">
+        <div class="flex flex-col">
+         <span class="text-accent text-base line-through mb-1">
+          94 799₽
+         </span>
+         <span class="text-white text-3xl font-bold tracking-wider">
+          71 999₽
+         </span>
+        </div>
+        <button class="ml-10 bg-gradient-to-r from-accent to-secondary hover:bg-[#00ff90] transition text-white text-xl font-medium rounded-lg px-12 py-3 shadow-lg">
+         В корзину
+        </button>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- Tabs and Description -->
+   <div class="flex mt-8">
+    <div class="flex-1 mr-8">
+     <div class="flex space-x-4 mb-4">
+      <button class="bg-[#232837] text-[#e6e6e6] px-6 py-2 rounded-md border border-[#3a3e4c] text-base font-medium flex items-center space-x-2">
+       <i class="fas fa-arrow-down">
+       </i>
+       <span>
+        Характеристики
+       </span>
+      </button>
+      <button class="bg-[#232837] text-[#e6e6e6] px-6 py-2 rounded-md border border-[#3a3e4c] text-base font-medium flex items-center space-x-2">
+       <i class="fas fa-comment-alt">
+       </i>
+       <span>
+        Отзывы
+       </span>
+      </button>
+     </div>
+     <div class="bg-[#232a39] rounded-xl p-6 text-[#e6e6e6] text-base leading-relaxed">
+      Игровой ноутбук ASUS TUF Gaming F17 FX707ZC4-HX014 с полноразмерной клавиатурой и 17.3-дюймовым экраном выполнен в классическом сером корпусе. RGB-подсветка сохраняет удобство и точность управления в темноте. Экран с технологией динамического обновления Adaptive-Sync и частотой 144 Гц показывает четкое и насыщенное изображение в разрешении 1920x1080 dpi без разрывов кадров и торможения при трансляции видео и игровых эффектов. Мощности процессора Intel 12-го поколения хватает для запуска на ASUS TUF Gaming F17 FX707ZC4-HX014 требовательных игр, графических редакторов и других ресурсоемких программ. При необходимости вы можете увеличивать ОЗУ с 16 ГБ до 32 ГБ, подключить второй накопитель через свободный слот M.2 PCIe 2280. Ноутбук оснащен набором разъемов и беспроводных интерфейсов для выбора удобного способа доступа в Интернет и связи с периферийными устройствами.
+     </div>
+    </div>
+    <div class="w-[420px] flex flex-col">
+     <div class="bg-[#232a39] rounded-xl p-4 flex flex-col items-center">
+      <img alt="Изображение ноутбука ASUS TUF Gaming, открытый, подсветка клавиатуры, презентация, темный фон" class="w-full h-[180px] object-cover rounded-lg mb-2" height="180" src="noyt22.png"/>
+      
+     </div>
+    </div>
+   </div>
+  </main>
+  <!-- Footer -->
+   <div class="absolute left-1/2 -translate-x-1/2 w-screen">
+ <footer class="bg-darker border-t border-gray-800 pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- About -->
+                <div>
+                    
+                    <p class="text-gray-400 mb-4">Лучший магазин электроники.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Магазин</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Все товары</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Новинки</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Популярное</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Акции</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Подарочные сертификаты</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Customer Service -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Помощь</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Доставка</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Оплата</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Возврат</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition">Контакты</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contacts -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Контакты</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-accent"></i> Москва, ул. Примерная, 123
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2 text-accent"></i> +7 (123) 456-78-90
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-accent"></i> info@nexus.ru
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-2 text-accent"></i> Пн-Пт: 10:00 - 20:00
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 Nexus. Все права защищены.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-accent text-sm transition">Политика конфиденциальности</a>
+                    <a href="#" class="text-gray-500 hover:text-accent text-sm transition">Условия использования</a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+ </body>
+</html>
