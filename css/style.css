@@ -1,0 +1,412 @@
+/* ========== ГЛОБАЛЬНЫЕ СТИЛИ ========== */
+:root {
+    --primary: #0d6efd;
+    --secondary: #6c757d;
+    --success: #198754;
+    --danger: #dc3545;
+    --warning: #ffc107;
+    --info: #0dcaf0;
+    --dark: #212529;
+    --light: #f8f9fa;
+    --sidebar-bg: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f4f6f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: var(--transition);
+}
+
+/* ========== ТЁМНАЯ ТЕМА ========== */
+body.dark-mode {
+    background-color: #1a1a2e;
+    color: #e4e6eb;
+}
+
+
+
+
+body.dark-mode .list-group-item {
+    background-color: #16213e !important;
+    color: #e4e6eb !important;
+    
+}
+
+
+
+
+
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+    background-color: #1e2a3a;
+    border-color: #2c3e50;
+    color: #e4e6eb;
+}
+
+body.dark-mode .form-control:focus {
+    background-color: #1e2a3a;
+    color: #e4e6eb;
+}
+
+/* ========== САЙДБАР ========== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 280px;
+    background: var(--sidebar-bg);
+    color: white;
+    padding: 1.5rem 0;
+    transition: var(--transition);
+    z-index: 1000;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    letter-spacing: 1px;
+}
+
+.logo i {
+    margin-right: 8px;
+    font-size: 1.5rem;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 1rem;
+}
+
+.sidebar nav a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    padding: 0.85rem 1rem;
+    border-radius: 0.5rem;
+    transition: var(--transition);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sidebar nav a i {
+    font-size: 1.25rem;
+    width: 24px;
+}
+
+.sidebar nav a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    transform: translateX(5px);
+}
+
+.sidebar nav a.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 4px 8px rgba(13, 110, 253, 0.3);
+}
+
+/* ========== ОСНОВНОЙ КОНТЕНТ ========== */
+.main-content {
+    margin-left: 280px;
+    padding: 20px;
+    min-height: 100vh;
+    transition: var(--transition);
+}
+
+/* ========== ВЕРХНЯЯ ПАНЕЛЬ ========== */
+.topbar {
+    background: white;
+    border-radius: 0.75rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    transition: var(--transition);
+}
+
+.profile-link {
+    text-decoration: none;
+    color: #495057;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: var(--transition);
+}
+
+.profile-link:hover {
+    background: #f8f9fa;
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.profile-link i {
+    font-size: 1.25rem;
+}
+
+/* ========== КАРТОЧКИ СТАТИСТИКИ ========== */
+.stat-card {
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+/* ========== КНОПКИ ========== */
+.btn-custom {
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.btn-custom:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ========== ТАБЛИЦЫ ========== */
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    border-top: none;
+    font-weight: 600;
+    padding: 1rem;
+}
+
+.table td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.05);
+    cursor: pointer;
+}
+
+/* ========== КАРТОЧКИ ТОВАРОВ ========== */
+.product-card {
+    transition: var(--transition);
+    border: none;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.product-img {
+    height: 200px;
+    object-fit: cover;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-img i {
+    font-size: 4rem;
+    color: white;
+}
+
+
+/* ========== ФОРМЫ ========== */
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.form-control, .form-select {
+    border-radius: 0.5rem;
+    border: 1px solid #dee2e6;
+    padding: 0.6rem 1rem;
+    transition: var(--transition);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+/* ========== ПРОФИЛЬ ========== */
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, var(--primary), #0b5ed7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+.profile-avatar i {
+    font-size: 5rem;
+    color: white;
+}
+
+.profile-info-item {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.profile-info-item label {
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 0.25rem;
+}
+
+/* ========== АДАПТИВНОСТЬ ========== */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: 15px;
+    }
+    
+    .menu-toggle {
+        display: block;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1100;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 0.5rem;
+        padding: 0.5rem 0.75rem;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+    
+    .menu-toggle:hover {
+        background: #0b5ed7;
+    }
+    
+    .topbar {
+        margin-top: 60px;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none;
+    }
+}
+/* ========== СТРАНИЦА ВХОДА ========== */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.login-card {
+    max-width: 400px;
+    width: 100%;
+}
+
+.login-header {
+    background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+    padding: 2rem;
+    text-align: center;
+    color: white;
+    border-radius: 0.75rem 0.75rem 0 0;
+}
+
+.login-header img {
+    border-radius: 50%;
+    background: white;
+    padding: 5px;
+}
+
+.login-body {
+    padding: 2rem;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 0.65rem;
+    font-weight: 600;
+}
+
+body.login-page .sidebar,
+body.login-page .menu-toggle {
+    display: none;
+}
+
+body.login-page .main-content {
+    margin-left: 0;
+    padding: 0;
+}
+
+body.login-page .topbar {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    left: auto;
+    background: transparent;
+    box-shadow: none;
+    z-index: 1000;
+}
+
+body.dark-mode .login-card {
+    background-color: #16213e !important;
+}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Главная - Админ Панель</title>
+<link rel="icon" type="image/png" href="css/png/logo.png">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle">
+    <i class="bi bi-list"></i>
+</button>
+
+<div class="wrapper">
+    <aside class="sidebar" id="sidebar">
+        <h3 class="logo">
+        <img src="css/png/logo.png" alt="logo" width="30" height="30">
+            AdminLTE
+        </h3>
+        <nav>
+            <a href="glav.html">
+                 Главная
+            </a>
+            <a href="users.html">
+                <i class="bi bi-people"></i> Пользователи
+            </a>
+            <a href="products.html">
+                <i class="bi bi-box"></i> Товары
+            </a>
+            <a href="orders.html">
+                <i class="bi bi-cart"></i> Заказы
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="topbar">
+            
+            <button class="btn btn-outline-secondary" id="themeBtn">
+                <i class="bi bi-moon"></i>
+            </button>
+            <a href="profile.html" class="profile-link">
+                <i class="bi bi-person-circle"></i>
+                Admin
+            </a>
+            
+        </div>
+
+        <!-- Статистика -->
+        <div class="row g-4 mb-4">
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="card stat-card bg-primary text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h2>150</h2>
+                                <p>Новые заказы</p>
+                            </div>
+                            <i class="bi bi-cart-check fs-1 opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="card stat-card bg-success text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h2>53%</h2>
+                                <p>Показатель отказов</p>
+                            </div>
+                            <i class="bi bi-graph-down fs-1 opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="card stat-card bg-warning text-dark">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h2>44</h2>
+                                <p>Регистрации</p>
+                            </div>
+                            <i class="bi bi-person-plus fs-1 opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="card stat-card bg-danger text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h2>65</h2>
+                                <p>Уникальные посетители</p>
+                            </div>
+                            <i class="bi bi-eye fs-1 opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Отчёт по продажам -->
+        <div class="card">
+            <div class="card-header">
+                <i class="bi bi-bar-chart"></i> Отчёт по продажам
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table">
+                            <tr>
+                                <th>Месяц</th>
+                                <th class="text-end">Продажи</th>
+                                <th class="text-end">Динамика</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><i class="bi bi-calendar3"></i> Январь</td>
+                                <td class="text-end fw-bold">45</td>
+                                <td class="text-end text-success"><i class="bi bi-arrow-up"></i> +5%</td>
+                            </tr>
+                            <tr>
+                                <td><i class="bi bi-calendar3"></i> Февраль</td>
+                                <td class="text-end fw-bold">60</td>
+                                <td class="text-end text-success"><i class="bi bi-arrow-up"></i> +33%</td>
+                            </tr>
+                            <tr>
+                                <td><i class="bi bi-calendar3"></i> Март</td>
+                                <td class="text-end fw-bold">78</td>
+                                <td class="text-end text-success"><i class="bi bi-arrow-up"></i> +30%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
